@@ -49,6 +49,7 @@ dependencies {
     implementation(libs.navigation.compose)
     implementation(libs.compose.icons)
     implementation(libs.bundles.room)
+    ksp(libs.room.compiler)
     testImplementation(libs.junit)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
