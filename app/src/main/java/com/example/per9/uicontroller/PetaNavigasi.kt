@@ -16,8 +16,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.per9.R
-import com.example.per9.view.DestinasiEntry
-import com.example.per9.view.DestinasiHome
 import com.example.per9.view.EntrySiswaScreen
 import com.example.per9.view.HomeScreen
 
