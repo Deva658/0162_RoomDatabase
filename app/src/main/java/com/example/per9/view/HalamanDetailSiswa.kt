@@ -195,7 +195,7 @@ private fun DeleteConfirmationDialog(
     AlertDialog(
         onDismissRequest = { /* Do nothing */ },
         title = { Text(stringResource(R.string.attention)) },
-        text = { Text(stringResource(R.string.delete_question)) },
+        text = { Text(stringResource(R.string.tanya)) },
         modifier = modifier,
         dismissButton = {
             TextButton(onClick = onDeleteCancel) {
