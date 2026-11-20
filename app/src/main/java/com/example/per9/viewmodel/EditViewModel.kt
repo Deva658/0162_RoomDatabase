@@ -9,6 +9,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.per9.repositori.RepositoriSiswa
 import com.example.per9.room.Siswa
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 class EditViewModel(
@@ -24,9 +26,9 @@ class EditViewModel(
         init {
             viewModelScope.launch {
                 uiStateSiswa = repositoriSiswa.getSiswaStream(idSiswa)
-                    .fillterNotNull()
+                    .filterNotNull()
                     .first()
-                    .toUIStateSiswa(true)
+                    .toUiStateSiswa(true)
             }
         }
     fun updateUiState(detailSiswa: DetailSiswa) {
