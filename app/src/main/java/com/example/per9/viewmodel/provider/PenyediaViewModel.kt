@@ -1,11 +1,16 @@
-package com.example.per9.viewmodel
+package com.example.per9.viewmodel.provider
 
 import android.app.Application
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.per9.AplikasiSiswa
+import com.example.per9.viewmodel.DetailViewModel
+import com.example.per9.viewmodel.EditViewModel
+import com.example.per9.viewmodel.EntryViewModel
+import com.example.per9.viewmodel.HomeViewModel
 
 object PenyediaViewModel {
     val Factory = viewModelFactory {
@@ -17,7 +22,14 @@ object PenyediaViewModel {
         initializer {
             EntryViewModel(aplikasiSiswa().container.repositoriSiswa)
         }
-
+        initializer {
+            DetailViewModel(this.createSavedStateHandle(),
+                aplikasiSiswa().container.repositoriSiswa
+            )
+        }
+        initializer {
+            EditViewModel(this.createSavedStateHandle(),aplikasiSiswa().container.repositoriSiswa)
+        }
     }
 }
 
