@@ -16,7 +16,6 @@ import kotlinx.coroutines.launch
 class EditViewModel(
     savedStateHandle: SavedStateHandle,
     private val repositoriSiswa: RepositoriSiswa,
-    fillterNotNull: Flow<Siswa?>.() -> Unit
 ): ViewModel() {
 
     var uiStateSiswa by mutableStateOf(UIStateSiswa())
