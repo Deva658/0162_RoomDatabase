@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.per9.repositori.RepositoriSiswa
 import com.example.per9.room.Siswa
+import com.example.per9.room.route.DestinasiDetailSiswa
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
