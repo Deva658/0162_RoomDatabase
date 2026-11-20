@@ -1,25 +1,63 @@
 package com.example.per9.uicontroller
 
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.per9.R
 import com.example.per9.room.route.DestinasiDetailSiswa
+import com.example.per9.room.route.DestinasiDetailSiswa.itemIdArg
 import com.example.per9.room.route.DestinasiEditSiswa
 import com.example.per9.view.DetailSiswaScreen
 import com.example.per9.view.EditSiswaScreen
 import com.example.per9.view.EntrySiswaScreen
 import com.example.per9.view.HomeScreen
-import com.example.per9.room.route.DestinasiDetailSiswa.itemIdArg
 
 @Composable
-fun SiswaApp(navController: NavHostController = rememberNavController(), modifier: Modifier = Modifier) {
+fun SiswaApp(
+    navController: NavHostController = rememberNavController(),
+    modifier: Modifier = Modifier
+) {
     HostNavigasi(navController = navController)
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun SiswaTopAppBar(
+    title: String,
+    canNavigateBack: Boolean,
+    modifier: Modifier = Modifier,
+    scrollBehavior: TopAppBarScrollBehavior? = null,
+    navigateUp: () -> Unit = {}
+) {
+    CenterAlignedTopAppBar(
+        title = { Text(title) },
+        modifier = modifier,
+        scrollBehavior = scrollBehavior,
+        navigationIcon = {
+            if (canNavigateBack) {
+                IconButton(onClick = navigateUp) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                        contentDescription = stringResource(R.string.back)
+                    )
+                }
+            }
+        }
+    )
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -28,12 +66,14 @@ fun HostNavigasi(
     navController: NavHostController,
     modifier: Modifier = Modifier
 ) {
-    NavHost(navController = navController, startDestination = DestinasiHome.route, modifier = Modifier)
-    {
+    NavHost(
+        navController = navController,
+        startDestination = DestinasiHome.route,
+        modifier = Modifier
+    ) {
         composable(DestinasiHome.route) {
             HomeScreen(
                 navigateToItemEntry = { navController.navigate(DestinasiEntry.route) },
-                //edit 1 : tambahkan parameter navigateToItemUpdate
                 navigateToItemUpdate = {
                     navController.navigate("${DestinasiDetailSiswa.route}/${it}")
                 }
@@ -42,7 +82,6 @@ fun HostNavigasi(
         composable(DestinasiEntry.route) {
             EntrySiswaScreen(navigateBack = { navController.popBackStack() })
         }
-        //edit 2 : tambahkan 2 composable route
         composable(
             route = DestinasiDetailSiswa.routeWithArgs,
             arguments = listOf(navArgument(itemIdArg) {
