@@ -30,7 +30,7 @@ import com.example.per9.uicontroller.DestinasiNavigasi
 import com.example.per9.uicontroller.SiswaTopAppBar
 import com.example.per9.viewmodel.DetailSiswa
 import com.example.per9.viewmodel.EntryViewModel
-import com.example.per9.viewmodel.PenyediaViewModel
+import com.example.per9.viewmodel.provider.PenyediaViewModel
 import com.example.per9.viewmodel.UIStateSiswa
 import kotlinx.coroutines.launch
 
